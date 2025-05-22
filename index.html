@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Course List Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Study Buddy Test </h1>
+  <input type="text" id="courseInput" placeholder="Enter Course Name" />
+  <button id="addCourseBtn">Add Course</button>
+  <ul id="courseList"></ul>
+
+  <script>
+    const courseList = [];
+    
+    function addCourse() {
+      const input = document.getElementById("courseInput");
+      const courseName = input.value.trim();
+      if (courseName) {
+        courseList.push(courseName);
+        input.value = "";
+        renderCourses();
+      }
+    }
+
+    function renderCourses() {
+      const list = document.getElementById("courseList");
+      list.innerHTML = "";
+      courseList.forEach(course => {
+        const li = document.createElement("li");
+        li.textContent = course;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("addCourseBtn").addEventListener("click", addCourse);
+  </script>
+</body>
+</html>
